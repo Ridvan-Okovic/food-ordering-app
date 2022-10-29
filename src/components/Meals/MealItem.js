@@ -53,6 +53,7 @@ const MealItem = (props) => {
                 type="number"
                 style={{
                   width: '35px',
+                  paddingLeft: '10px',
                   border: '1px solid lightgray',
                   borderRadius: '5px',
                   fontSize: '16px',
@@ -75,7 +76,15 @@ const MealItem = (props) => {
           </form>
         </div>
       </div>
-      <hr style={{ marginBottom: '15px', color: 'lightgray' }} />
+      <hr
+        style={{
+          marginBottom: '15px',
+          borderTop: '1px solid lightgray',
+          borderRight: 'none',
+          borderLeft: 'none',
+          borderBottom: 'none',
+        }}
+      />
     </>
   );
 };

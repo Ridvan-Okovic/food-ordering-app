@@ -15,7 +15,7 @@ const DUMMY_MEALS = [
     id: 'm2',
     name: 'Schnitzel',
     description: 'A german specialty!',
-    price: 16.5,
+    price: 16.55,
   },
   {
     id: 'm3',
@@ -33,7 +33,7 @@ const DUMMY_MEALS = [
     id: 'm5',
     name: 'Argeta Pašteta',
     description: 'Edin Džeko snimao reklamu za Argetu!',
-    price: 1.7,
+    price: 1.75,
   },
 ];
 
