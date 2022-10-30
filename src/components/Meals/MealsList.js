@@ -3,6 +3,11 @@ import React from 'react';
 import MealItem from './MealItem';
 
 const MealsList = (props) => {
+  const saveMealItemHandler = (meal) => {
+    const mealItem = { id: Math.random().toString(), ...meal };
+    props.onSaveCartItem(mealItem);
+  };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Card
@@ -14,12 +19,13 @@ const MealsList = (props) => {
         }}
       >
         <CardContent>
-          {props.meals.map((mealItem) => (
+          {props.meals.map((meal) => (
             <MealItem
-              key={mealItem.id}
-              name={mealItem.name}
-              description={mealItem.description}
-              price={mealItem.price}
+              onAddCartItem={saveMealItemHandler}
+              key={meal.id}
+              name={meal.name}
+              description={meal.description}
+              price={meal.price}
             />
           ))}
         </CardContent>

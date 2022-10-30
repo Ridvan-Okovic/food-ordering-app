@@ -1,8 +1,26 @@
 import { Button, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import React from 'react';
+import React, { useState } from 'react';
 
 const MealItem = (props) => {
+  const [amount, setAmount] = useState('1');
+
+  const amountChangeHandler = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const onAddMealHandler = () => {
+    const mealItem = {
+      key: props.id,
+      name: props.name,
+      price: props.price,
+      amount: amount,
+    };
+
+    props.onAddCartItem(mealItem);
+    setAmount('1');
+  };
+
   return (
     <>
       <div
@@ -50,7 +68,9 @@ const MealItem = (props) => {
               </Typography>
 
               <input
+                onChange={amountChangeHandler}
                 type="number"
+                value={amount}
                 style={{
                   width: '35px',
                   paddingLeft: '10px',
@@ -61,6 +81,7 @@ const MealItem = (props) => {
               />
             </div>
             <Button
+              onClick={onAddMealHandler}
               variant="contained"
               startIcon={<AddIcon />}
               style={{

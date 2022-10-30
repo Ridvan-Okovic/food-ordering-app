@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Layout/Header';
 import MealsList from './components/Meals/MealsList';
-import CartModal from './components/UI/CartModal';
 import HomeCard from './components/UI/HomeCard';
+
+const CART_MEALS = [];
 
 const DUMMY_MEALS = [
   {
@@ -38,12 +39,19 @@ const DUMMY_MEALS = [
 ];
 
 const App = () => {
+  const [mealCartItems, setMealCartItem] = useState(CART_MEALS);
+
+  const saveMealHandler = (meal) => {
+    setMealCartItem((prevMeal) => {
+      return [...prevMeal, meal];
+    });
+  };
+
   return (
     <>
-      <Header />
+      <Header cartItem={mealCartItems} />
       <HomeCard />
-      <MealsList meals={DUMMY_MEALS} />
-      <CartModal />
+      <MealsList meals={DUMMY_MEALS} onSaveCartItem={saveMealHandler} />
     </>
   );
 };

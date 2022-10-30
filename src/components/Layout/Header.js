@@ -3,16 +3,26 @@ import React, { useState } from 'react';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Meals from '../../assets/meals.jpg';
+import CartModal from '../UI/CartModal';
 
 const Header = (props) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const openCartHandler = () => {
+    console.log(props.cartItem);
     setCartOpen(true);
+  };
+
+  const cartCloseHandler = () => {
+    setCartOpen(false);
   };
 
   return (
     <>
+      {cartOpen && (
+        <CartModal cartItem={props.cartItem} onClose={cartCloseHandler} />
+      )}
+
       <header>
         <AppBar
           style={{
